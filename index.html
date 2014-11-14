@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Newsstand</title>
+        <meta charset="utf-8">
+        <base target="_blank">
+        
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <meta name="mobile-web-app-capable" content="yes">
+        
+        <link rel="stylesheet" href="style.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>
+            <button class="ui burger left"></button>
+            <h1>Newsstand</h1>
+        </header>
+        
+        <aside id="sidebar">
+            <div id="topics_choose"></div>
+        </aside>
+        
+        <div id="stream_container">
+            <div class="loader">
+                <div class="loader_circ"></div>
+            </div>
+            <ul id="stream">
+                <!-- items inserted with javascript -->
+            </ul>
+        </div>
+        
+        <script src="js/masonry.pkgd.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

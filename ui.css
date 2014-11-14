@@ -1,0 +1,111 @@
+.ui.burger {
+    background-image: url(img/ui/burger.svg);
+    transition: transform .3s, background 0;
+    transition-delay: 0, .1s;
+}
+
+.nav_opened .ui.burger {
+    background-image: url(img/ui/rarr.svg);
+    transform: rotate(180deg);
+}
+
+.ui.options {
+    background-image: url(img/ui/settings.svg);
+}
+
+.ui.info {
+    background-image: url(img/ui/info.svg);
+}
+
+/* 
+   app #6EBB36
+   
+   world #FF4136
+   business #3D9970
+   politics #85144B
+   health #2ECC40
+   science #0074D9
+   tech #39CCCC
+   entertainment #FF851B
+   art #B10DC9
+*/
+
+@keyframes loaderColors {
+    0% { background-color: #6EBB36 }
+    9.9% { background-color: #6EBB36 }
+    10% { background-color: #FF4136 }
+    19.9% { background-color: #FF4136 }
+    20% { background-color: #3D9970 }
+    29.9% { background-color: #3D9970 }
+    30% { background-color: #85144B }
+    39.9% { background-color: #85144B }
+    40% { background-color: #2ECC40 }
+    49.9% { background-color: #2ECC40 }
+    50% { background-color: #0074D9 }
+    59.9% { background-color: #0074D9 }
+    60% { background-color: #39CCCC }
+    69.9% { background-color: #39CCCC }
+    70% { background-color: #FF851B }
+    79.9% { background-color: #FF851B }
+    80% { background-color: #B10DC9 }
+    80.9% { background-color: #B10DC9 }
+    90% { background-color: #6EBB36 }
+    90.9% { background-color: #6EBB36 }
+    100% { background-color: #6EBB36 }
+}
+
+@-webkit-keyframes loaderColors {
+    0% { background-color: #6EBB36 }
+    9.9% { background-color: #6EBB36 }
+    10% { background-color: #FF4136 }
+    19.9% { background-color: #FF4136 }
+    20% { background-color: #3D9970 }
+    29.9% { background-color: #3D9970 }
+    30% { background-color: #85144B }
+    39.9% { background-color: #85144B }
+    40% { background-color: #2ECC40 }
+    49.9% { background-color: #2ECC40 }
+    50% { background-color: #0074D9 }
+    59.9% { background-color: #0074D9 }
+    60% { background-color: #39CCCC }
+    69.9% { background-color: #39CCCC }
+    70% { background-color: #FF851B }
+    79.9% { background-color: #FF851B }
+    80% { background-color: #B10DC9 }
+    80.9% { background-color: #B10DC9 }
+    90% { background-color: #6EBB36 }
+    90.9% { background-color: #6EBB36 }
+    100% { background-color: #6EBB36 }
+}
+
+@keyframes loaderSize {
+    0%, 100% { transform: scale(0) }
+    50% { transform: scale(1) }
+}
+
+@-webkit-keyframes loaderSize {
+    0%, 100% { transform: scale(0) }
+    50% { transform: scale(1) }
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin: 70px -25px;
+}
+
+.loading .loader {
+    display: block;
+}
+
+.loader .loader_circ {
+    background-color: #6EBB36;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+    animation: loaderColors 10s linear infinite, loaderSize 1s infinite;
+    -webkit-animation: loaderColors 10s linear infinite, loaderSize 1s infinite;
+}

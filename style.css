@@ -1,0 +1,335 @@
+@import url(ui.css);
+
+@keyframes streamItemAppear {
+    from { transform: translateY(200px) rotate(10deg); opacity: 0; }
+}
+
+@-webkit-keyframes streamItemAppear {
+    from { transform: translateY(200px) rotate(10deg); opacity: 0 }
+}
+
+*, :before, :after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    text-decoration: none;
+    
+    transition-duration: .3s;
+    transition-property: none;
+}
+
+:focus {
+    outline: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+    color: #222;
+    overflow: hidden;
+}
+
+body, #stream_container {
+    background-color: #eee;
+}
+
+a {
+    border-bottom: solid 1px #6EBB36;
+    color: #5c9d2d;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 60px;
+    
+    text-align: center;
+    
+    background-color: #6EBB36;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    
+    z-index: 3;
+}
+
+h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 15px;
+    
+    text-align: center;
+    line-height: 1;
+    font-weight: 300;
+    font-size: 1.7em;
+    
+    z-index: -1;
+}
+
+header .ui {
+    vertical-align: top;
+    margin: 5px;
+    opacity: .7;
+    
+    transition-property: opacity;
+}
+
+header .ui:hover {
+    opacity: 1;
+}
+
+.ui {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    
+    width: 50px;
+    height: 50px;
+    
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ui.left {
+    float: left;
+}
+
+.ui.right {
+    float: right;
+}
+
+aside {
+    position: fixed;
+    left: -300px;
+    top: 60px;
+    width: 250px;
+    height: calc(100% - 60px);
+    z-index: 2;
+    background-color: white;
+    padding: 20px 0;
+    overflow-y: auto;
+    
+    transition-property: left, box-shadow;
+}
+
+#stream_container {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 50px 100px;
+    margin-top: 60px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+#stream_container:after {
+    content: "";
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: rgba(0, 0, 0, .3);
+    opacity: 0;
+    pointer-events: none;
+    
+    transition-property: opacity;
+}
+
+#stream {
+    width: 100%;
+    
+    list-style: none;
+}
+
+#stream a {
+    color: inherit;
+}
+
+#stream li {
+    display: inline-block;
+    
+    width: calc(50% - 40px);
+    padding: 20px;
+    margin: 20px;
+    
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-top: solid 3px transparent;
+    border-radius: 4px;
+    
+    animation: streamItemAppear .3s;
+    -webkit-animation: streamItemAppear .3s;
+    
+    transition-property: box-shadow;
+}
+
+#stream li:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#stream h3 {
+    margin-bottom: 10px;
+}
+
+#stream p {
+    margin: 10px 0;
+    font-weight: 300;
+    color: #444;
+}
+
+#stream time {
+    color: #777;
+    font-size: .9em;
+    font-weight: 300;
+}
+
+#stream img {
+    max-width: 100%;
+    display: block;
+    margin: 20px 0;
+}
+
+body.nav_opened #stream_container {
+    overflow: hidden;
+    pointer-events: none;
+}
+
+body.nav_opened aside {
+    left: 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+body.nav_opened #stream_container:after {
+    opacity: 1;
+}
+
+aside label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    
+    transition-property: background;
+}
+
+aside label.checked {
+    color: white;
+}
+
+aside label * {
+    vertical-align: middle;
+}
+
+aside label span {
+    text-transform: capitalize;
+}
+
+aside label input {
+    -webkit-appearance: none;
+    
+    margin: 10px;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+    background-image: url(img/ui/checkbox-unchecked.svg);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+aside label input:checked {
+    background-image: url(img/ui/checkbox-checked.svg);
+}
+
+#stream li[data-topic=world] {
+    border-color: #FF4136;
+}
+
+#stream li[data-topic=tech] {
+    border-color: #39CCCC;
+}
+
+#stream li[data-topic=science] {
+    border-color: #0074D9;
+}
+
+#stream li[data-topic=business] {
+    border-color: #3D9970;
+}
+
+#stream li[data-topic=politics] {
+    border-color: #85144B;
+}
+
+#stream li[data-topic=health] {
+    border-color: #2ECC40;
+}
+
+#stream li[data-topic=entertainment] {
+    border-color: #FF851B;
+}
+
+#stream li[data-topic=art] {
+    border-color: #B10DC9;
+}
+
+aside label.checked[data-topic=world] {
+    background-color: #FF4136;
+}
+
+aside label.checked[data-topic=tech] {
+    background-color: #39CCCC;
+}
+
+aside label.checked[data-topic=science] {
+    background-color: #0074D9;
+}
+
+aside label.checked[data-topic=business] {
+    background-color: #3D9970;
+}
+
+aside label.checked[data-topic=politics] {
+    background-color: #85144B;
+}
+
+aside label.checked[data-topic=health] {
+    background-color: #2ECC40;
+}
+
+aside label.checked[data-topic=entertainment] {
+    background-color: #FF851B;
+}
+
+aside label.checked[data-topic=art] {
+    background-color: #B10DC9;
+}
+
+@media only screen and (max-width: 720px) {
+    #stream_container {
+        padding: 10px;
+    }
+    
+    #stream li {
+        width: calc(100% - 40px);
+    }
+}
